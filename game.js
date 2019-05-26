@@ -1,7 +1,6 @@
 /* 
     Equipe: 
         André Luís Dantas Soares de Araújo - Subturma A (Líder) 
-        Etapa 7 e 8
 */
 
 var disparo = false; 
