@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <h1>LoP</h1>
+    <h1>Projeto de LoP - André Luís</h1>
     <u1>
       <li> 1º e 2º Etapas (Já realizadas)</li>
       <li> 3º e 4º Etapas (Já realizadas)</li>
