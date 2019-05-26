@@ -2,7 +2,6 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>andreluis26 // Projeto LoP</title>
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
