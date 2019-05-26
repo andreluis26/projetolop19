@@ -77,7 +77,7 @@ function draw() {
   }    
     if (dist(x, y, vxo[i], vyo[i]) < raioP + raio0) { // Distância Jogador e Inimigo
     x = 450;
-    y = 400;
+    y = 550;
     vidas = vidas - 1;
   }    
     if (dist(xd, yd, vxo[i], vyo[i]) < raioP + raio0) { // Distância Tiro e Inimigo
