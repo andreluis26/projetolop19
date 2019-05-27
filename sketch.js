@@ -21,8 +21,8 @@ var flash = 4; // Velocidade do Inimigo
 function setup() {
   createCanvas(500, 600)
   for (var i = 0;  i <qtObjetosMax; i++) { // Vetor dos Inimigos
-    vxo [i] = random (0,500);
-    vyo [i] = random (0,500);
+    vxo [i] = random (0,640);
+    vyo [i] = random (0,400);
 }  
   x = 450;
   xd = x; 
