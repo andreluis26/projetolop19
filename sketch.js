@@ -72,8 +72,8 @@ function draw() {
   square(vxo[i], vyo[i], 55, 55);
      vxo[i] = vxo[i] + flash; // Movimentação do Inimigo
   	if ( vxo[i] > width ) {
-     vxo[i] = random(0, 640) // Coordenadas de Movimentação do Inimigo (Eixo X)
-     vyo[i] = random(0, 400) // Coordenadas de Movimentação do Inimigo (Eixo Y)
+     vxo[i] = random(450, 640) // Coordenadas de Movimentação do Inimigo (Eixo X)
+     vyo[i] = random(500, 400) // Coordenadas de Movimentação do Inimigo (Eixo Y)
   }    
     if (dist(x, y, vxo[i], vyo[i]) < raioP + raio0) { // Distância Jogador e Inimigo
     x = 450;
