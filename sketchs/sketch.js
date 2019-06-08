@@ -1,11 +1,3 @@
-/* 
-    Equipe: 
-        André Luís Dantas Soares de Araújo - Subturma A (Líder) 
-        Etapa 9 e 10
-*/
-
-var disparo = false; 
-var xd, yd; // Coordenadas do Disparo
 var x, y; // Coordenadas do Jogador
 var vidas = 3; // Vidas do Jogador
 var pontos = 0; // Pontuação do Jogador
@@ -73,17 +65,6 @@ function draw() {
   imageMode(CENTER)
   image(floresta_gameover, 350, 300);
  }
-  if (keyIsDown(CONTROL) && (! disparo)) { // Tiro do Jogador
-    disparo = true; 
-    xd = x;
-    yd = y;     
-  }
-  if (disparo) {
-    yd = yd - 5;
-  } 
-    if (yd < 0) {
-      disparo = false; 
-  }
   
   if (tela === 2) {
   if (vidas <= 0) {
@@ -92,10 +73,7 @@ function draw() {
   background (0);
   imageMode(CENTER)
   image(floresta, 350, 300);
-  if (disparo) { // Comandos do Jogador
-    fill(255)
-    ellipse(xd,yd,10,10); // Forma do Tiro
-  }
+
   if (keyIsDown(RIGHT_ARROW)) {
    x = x + 4;
   }
