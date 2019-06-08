@@ -1,6 +1,7 @@
 /* 
     Equipe: 
         André Luís Dantas Soares de Araújo - Subturma A (Líder) 
+        Etapa 9 e 10
 */
 
 var disparo = false; 
@@ -10,28 +11,76 @@ var vidas = 3; // Vidas do Jogador
 var pontos = 0; // Pontuação do Jogador
 var dificuldade = 1; // Nível de Dificuldade do Jogo
 var raioP = 25; // Raio do Jogador
-var vxo = []; // Coordenadas do Inimigo
-var vyo = []; // Coordenadas do Inimigo
-var qtObjetos = 2; // Quantidade de Inimigos
-var qtObjetosMax = 10; // Quantidade Máxima de Inimigos
+var vxo = []; // Coordenadas da Comida (Eixo X)
+var vyo = []; // Coordenadas da Comida (Eixo Y)
+var lxo = []; // Coordenadas do Lixo (Eixo X)
+var lyo = []; // Coordenadas do Lixo (Eixo Y)
+var qtComida = 2; // Quantidade de Comida
+var qtComidaMax = 6; // Quantidade Máxima de Comida
+var qtLixo = 1; // Quantidade de Comida
+var qtLixoMax = 5; // Quantidade Máxima de Lixo
 var raio0 = 30; // Raio do Inimigo
-var flash = 4; // Velocidade do Inimigo
+var flash = 3; // Velocidade do Inimigo
+var tela = 1; // Variável para Alternância entre Telas (Início, Game Over, etc)
+var anima; // Imagem do Coala
+var coalaAndando = [];
+var contFrame = 0
+var lixo; // Imagem do Lixo (Inimigo)
+var comida; // Imagem da Comida
+var paraFrame = 0;
 
-
-function setup() {
-  createCanvas(500, 600)
-  for (var i = 0;  i <qtObjetosMax; i++) { // Vetor dos Inimigos
-    vxo [i] = random (0,500);
-    vyo [i] = random (0,500);
-}  
-  x = 450;
-  xd = x; 
-  
-  y = 550; 
-  yd = y; 
+function preload() {
+  for (i = 0; i < 3; i++) {
+    coalaAndando[i] = loadImage("coala_andando"+i+".png");
+  }
+    lixo = loadImage("lixo.png");
+    comida = loadImage("folha_comida.png");
 }
 
+function setup() {
+  createCanvas(700, 600)
+  for (var i = 0;  i <qtComidaMax; i++) { // Vetor da Comida
+    vxo [i] = random (50,450);
+    vyo [i] = random (150,330);
+}
+    for (var p = 0;  p <qtLixoMax; p++) { // Vetor do Lixo
+    lxo [p] = random (200,550);
+    lyo [p] = random (300,450);
+}  
+  x = 30;
+  xd = x; 
+  
+  y = 270; 
+  yd = y; 
+}
 function draw() {
+  if (tela === 1) { // Tela Inicial (Começo do Jogo)
+  background (0);
+  textSize(32);
+  fill(225, 106, 15);
+  text("ALIMENTE OS COALAS", 170, 215);
+  textSize(32);
+  fill(225, 106, 15);
+  text("Evite a extinção de uma população de coalas!", 30, 310);
+  textSize(32);
+  fill(225, 106, 15);
+  text("Pressione 'ENTER' para começar", 115, 410);
+    if (keyIsDown(ENTER)) { // Comando para inciar o jogo
+     tela = 2;
+  }
+ }
+  if (tela === 3) { // Game Over (Fim de Jogo)
+  background (0);
+  textSize(32);
+  fill(225, 106, 15);
+  text("AH NÃO! Os coalas foram extintos!", 105, 215);
+  textSize(32);
+  fill(225, 106, 15);
+  text("GAME OVER", 220, 310);
+  textSize(32);
+  fill(225, 106, 15);
+  text("Pressione 'F5' para recomeçar", 115, 410);
+ }
   if (keyIsDown(CONTROL) && (! disparo)) { // Tiro do Jogador
     disparo = true; 
     xd = x;
@@ -42,7 +91,12 @@ function draw() {
   } 
     if (yd < 0) {
       disparo = false; 
-  } 
+  }
+  
+  if (tela === 2) {
+  if (vidas <= 0) {
+     tela = 3;
+  }  
   background(0);
   if (disparo) { // Comandos do Jogador
     fill(255)
@@ -60,49 +114,68 @@ function draw() {
   if (keyIsDown(DOWN_ARROW)) {
    y += 4;
   }
+    
+  anima = coalaAndando[contFrame];
+    
   fill(255); // Cor do Jogador
-  ellipse(x, y, 2*raioP, 2*raioP); // Jogador
+  noStroke();
+  imageMode(CENTER);
+  image(anima, x, y);
   fill(0, 102, 153);
   textSize(18);
-  text('VIDAS: '+vidas, 10, 30);
-  text('PONTOS: '+pontos, 200, 30);
-  text('NÍVEL: '+dificuldade, 400, 30);
-  fill(140); // Cores das Informações (Vidas, Pontos e Níveis)
-  for (var i = 0;  i <qtObjetos; i++) {
-  square(vxo[i], vyo[i], 55, 55);
-     vxo[i] = vxo[i] + flash; // Movimentação do Inimigo
-  	if ( vxo[i] > width ) {
-     vxo[i] = random(-390,-40);
-  }    
-    if (dist(x, y, vxo[i], vyo[i]) < raioP + raio0) { // Distância Jogador e Inimigo
-    x = 450;
-    y = 400;
-    vidas = vidas - 1;
-  }    
-    if (dist(xd, yd, vxo[i], vyo[i]) < raioP + raio0) { // Distância Tiro e Inimigo
-    vxo[i] = 500;
-    vyo[i] = 250;
+  text('VIDAS: '+vidas, 100, 30);
+  text('PONTOS: '+pontos, 300, 30);
+  text('NÍVEL: '+dificuldade, 500, 30);
+  fill(140); // Cores das Informações (Vidas, Pontos e Níveis) 
+  
+  contFrame++; 
+    
+  if (contFrame > 2) {
+    contFrame = 0;
+  }
+    
+  for (var i = 0;  i <qtComida; i++) {
+  image(comida, vxo[i], vyo[i]);
+     vxo[i] = vxo[i] - flash; // Movimentação da Comida
+  	if ( vxo[i] < 0 ) {
+     vxo[i] = width;
+     vyo[i] = random(600,40);
+   }
+  for (var p = 0;  p <qtLixo; p++) {
+   image(lixo, lxo[i], lyo[i]);
+     fill(50); 
+     lxo[i] = lxo[p] - flash; // Movimentação do Lixo
+  	if ( lxo[p] < 0 ) {
+      lxo[p] = width;
+      lyo[p] = random(600,50);
+   }    
+    if (dist(x, y, vxo[i], vyo[i]) < raioP + raio0) { // Distância Jogador e Comida
+    vxo [i] = 450;
+    vyo [i] = 300;
     pontos = pontos + 2;
+  }    
+    if (dist(x, y, lxo[p], lyo[p]) < raioP + raio0) { // Distância Jogador e Lixo
+    x = 30;
+    y = 270;
+    vidas = vidas - 1;
+  }
     if (pontos == 10) { // Nível 2
       dificuldade = 2;
-      qtObjetos++;
-      flash = flash + 1;
- }
+      flash = flash + 0.25;
+  }
       if (pontos == 20) { // Nível 3
       dificuldade = 3;
-      qtObjetos++;
-      flash = flash + 1;
- }
+      flash = flash + 0.25;
+  }
       if (pontos == 30) { // Nível 4
       dificuldade = 4;
-      qtObjetos++;
       flash = flash + 1;
- }
-      if (pontos == 40) { // Nível 5
-      dificuldade = 5;
-      qtObjetos++;
-      flash = flash + 1;
-   }
   }
- }
-} 
+      if (pontos == 40) { // Nível 5
+        dificuldade = 5;
+      flash = flash + 1;
+  }
+}
+}
+}
+}
