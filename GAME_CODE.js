@@ -26,13 +26,13 @@ var paraFrame = 0;
 
 function preload() {
   for (i = 0; i < 3; i++) {
-    coalaAndando[i] = loadImage("coala_"+i+".png");
+    coalaAndando[i] = loadImage("IMAGENS/coala_"+i+".png");
   }
-    lixo = loadImage("lata_de_lixo.png");
-    comida = loadImage("folha_do_coala.png");
-    floresta = loadImage("floresta.jpg");
-    floresta1 = loadImage("floresta_inicio.jpg");
-    floresta_gameover = loadImage("floresta_gameover.jpg");
+    lixo = loadImage("IMAGENS/lata_de_lixo.png");
+    comida = loadImage("IMAGENS/folha_do_coala.png");
+    floresta = loadImage("IMAGENS/floresta.jpg");
+    floresta1 = loadImage("IMAGENS/floresta_inicio.jpg");
+    floresta_gameover = loadImage("IMAGENS/floresta_gameover.jpg");
 }
 
 function setup() {
