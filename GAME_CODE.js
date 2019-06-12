@@ -2,7 +2,7 @@ var x, y; // Coordenadas do Jogador
 var vidas = 3; // Vidas do Jogador
 var pontos = 0; // Pontuação do Jogador
 var dificuldade = 1; // Nível de Dificuldade do Jogo
-var raioP = 30; // Raio do Jogador
+var raioP = 25; // Raio do Jogador
 var vxo = []; // Coordenadas da Comida (Eixo X)
 var vyo = []; // Coordenadas da Comida (Eixo Y)
 var lxo = []; // Coordenadas do Lixo (Eixo X)
@@ -11,7 +11,7 @@ var qtComida = 2; // Quantidade de Comida
 var qtComidaMax = 6; // Quantidade Máxima de Comida
 var qtLixo = 1; // Quantidade de Comida
 var qtLixoMax = 5; // Quantidade Máxima de Lixo
-var raio0 = 35; // Raio do Inimigo
+var raio0 = 25; // Raio do Inimigo
 var flash = 3; // Velocidade do Inimigo
 var tela = 1; // Variável para Alternância entre Telas (Início, Game Over, etc)
 var anima; // Imagem do Coala
