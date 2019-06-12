@@ -38,11 +38,11 @@ function preload() {
 function setup() {
   createCanvas(700, 600)
   for (var i = 0;  i <qtComidaMax; i++) { // Vetor da Comida
-    vxo [i] = random (0,450);
+    vxo [i] = 700 + random (500);
     vyo [i] = random (0,330);
 }
     for (var p = 0;  p <qtLixoMax; p++) { // Vetor do Lixo
-    lxo [p] = random (0,550);
+    lxo [p] =700 + random (500);
     lyo [p] = random (0,450);
 }  
   x = 30;
@@ -110,20 +110,20 @@ function draw() {
   image(comida, vxo[i], vyo[i]);
      vxo[i] = vxo[i] - flash; // Movimentação da Comida
   	if ( vxo[i] < 0 ) {
-     vxo[i] = random(600,550);
-     vyo[i] = random(600,450);
+     vxo[i] = 700 + random(550);
+     vyo[i] = random(0,58);
    }
   for (var p = 0;  p <qtLixo; p++) {
    image(lixo, lxo[i], lyo[i]);
      fill(50); 
      lxo[i] = lxo[p] - flash; // Movimentação do Lixo
   	if ( lxo[p] < 0 ) {
-      lxo[p] = random(700,0);
-      lyo[p] = random(700,0);
+      lxo[p] = 700 + random(700);
+      lyo[p] = random(20 , 580);
    }    
     if (dist(x, y, vxo[i], vyo[i]) < raioP + raio0) { // Distância Jogador e Comida
-      vxo[i] = random(700,0);
-      vyo[i] = random(700,0);
+      vxo[i] = 700 + random(500);
+      vyo[i] = random(20,580);
     pontos = pontos + 2;
   }    
     if (dist(x, y, lxo[p], lyo[p]) < raioP + raio0) { // Distância Jogador e Lixo
