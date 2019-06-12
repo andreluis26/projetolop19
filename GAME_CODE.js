@@ -129,6 +129,8 @@ function draw() {
     if (dist(x, y, lxo[p], lyo[p]) < raioP + raio0) { // Distância Jogador e Lixo
     x = 30;
     y = 270;
+    lxo[p] = random(700,0);
+    lyo[p] = random(700,0);
     vidas = vidas - 1;
   }
     if (pontos >= 15) { // Nível 2
