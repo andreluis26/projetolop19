@@ -38,12 +38,12 @@ function preload() {
 function setup() {
   createCanvas(700, 600)
   for (var i = 0;  i <qtComidaMax; i++) { // Vetor da Comida
-    vxo [i] = random (50,450);
-    vyo [i] = random (150,330);
+    vxo [i] = random (0,450);
+    vyo [i] = random (0,330);
 }
     for (var p = 0;  p <qtLixoMax; p++) { // Vetor do Lixo
-    lxo [p] = random (200,550);
-    lyo [p] = random (300,450);
+    lxo [p] = random (0,550);
+    lyo [p] = random (0,450);
 }  
   x = 30;
   xd = x; 
