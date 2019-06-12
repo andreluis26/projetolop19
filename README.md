@@ -12,7 +12,7 @@
       <li> 5º e 6º Etapas (Já realizadas)</li>
       <li> 7º e 8º Etapas (Já realizadas)</li>
       <li> 9º e 10º Etapas (Já realizadas)</li>
-      <li><a href="https://andreluis26.github.io/projetolop19/index.html">Clique aqui para abrir o jogo (Ainda não está funcionando)</a></li>
+      <li><a href="https://andreluis26.github.io/projetolop19/index.html">Clique aqui para abrir o jogo (Está funcionando)</a></li>
     </u1>
 
   </body>
